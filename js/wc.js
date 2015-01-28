@@ -1,22 +1,27 @@
 /*
- * oakland_pubrests.js
+ * wc.js
  * Copyright (C) 2015 Christopher C. Strelioff <chris.strelioff@gmail.com>
  *
  * Distributed under terms of the MIT license.
  */
-var map = L.map('map');
+var map;
 
-L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    id: 'examples.map-i875mjb7'
-}).addTo(map);
+function initmap() {
+    // set up the map
+    map = new L.Map('map');
 
-// Locate User
+    // create the tile layer with correct attribution
+    var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+    var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 18, attribution: osmAttrib});       
 
-map.locate({setView: true, maxZoom: 16});
+    // Locate User
+    map.locate({setView: true, maxZoom: 12});
+
+    map.addLayer(osm);
+}
+
+initmap();
 
 function onLocationFound(e) {
     var radius = e.accuracy / 2;
@@ -30,9 +35,11 @@ function onLocationFound(e) {
 map.on('locationfound', onLocationFound);
 
 
-// Mark bathrooms
-L.marker([37.80741, -122.25427]).addTo(map)
-    .bindPopup("<b>Bathroom 1</b>");
+// Mark bathrooms  
+// 1: 37.80902, -122.24855
+//
+L.marker([37.80902, -122.24855]).addTo(map)
+    .bindPopup("<b>Bathroom 1</b><br /><p>Information about Bathroom 1.</p>");
 
 // Show click location
 var popup = L.popup();
