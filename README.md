@@ -1,2 +1,2 @@
 # oakland_wc
-Oakland public restrooms mapping -- very alph.
+Oakland public restrooms mapping -- very alpha.
