@@ -42,13 +42,13 @@ L.marker([37.80902, -122.24855]).addTo(map)
     .bindPopup("<b>Bathroom 1</b><br /><p>Information about Bathroom 1.</p>");
 
 // Show click location
-var popup = L.popup();
-
-function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
-        .openOn(map);
-}
-
-map.on('click', onMapClick);
+//var popup = L.popup();
+//
+//function onMapClick(e) {
+//    popup
+//        .setLatLng(e.latlng)
+//        .setContent("You clicked the map at " + e.latlng.toString())
+//        .openOn(map);
+//}
+//
+//map.on('click', onMapClick);
